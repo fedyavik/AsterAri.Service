@@ -1,0 +1,23 @@
+﻿namespace AsteriskAriService.Models.Asterisk.Event
+{
+	/// <summary>
+	/// Channel changed location in the dialplan.
+	/// </summary>
+	public class ChannelDialplanEvent : EventModel
+	{
+		/// <summary>
+		/// The channel that changed dialplan location.
+		/// </summary>
+		public ChannelModel Channel { get; set; }
+
+		/// <summary>
+		/// The application about to be executed.
+		/// </summary>
+		public string Dialplan_app { get; set; }
+
+		/// <summary>
+		/// The data to be passed to the application.
+		/// </summary>
+		public string Dialplan_app_data { get; set; }
+	}
+}
