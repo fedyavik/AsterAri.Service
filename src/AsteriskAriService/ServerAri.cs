@@ -40,10 +40,17 @@ namespace AsteriskAriService
 
         private async Task StartSessionPipeline(string channelId, List<string> args, SessionStorage? redirectData = null)
         {
-            using var scope = ServiceProvider.CreateScope();
-            var scopeServiceProvider = scope.ServiceProvider;
-            var pipeline = ActivatorUtilities.CreateInstance<SessionPipeline>(scopeServiceProvider);
-            await pipeline.Start(channelId, args, redirectData);
+            try
+            {
+                using var scope = ServiceProvider.CreateScope();
+                var scopeServiceProvider = scope.ServiceProvider;
+                var pipeline = ActivatorUtilities.CreateInstance<SessionPipeline>(scopeServiceProvider);
+                await pipeline.Start(channelId, args, redirectData);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("Unhandled session exception {ChannelId} {Error} \n {StackTrace}",channelId, e.Message, e.StackTrace);
+            }
         }
         
         /// <inheritdoc/>>
