@@ -1,4 +1,4 @@
-# AsterkAri.Service
+# AsterAri.Service
 
 #### REST + WebSocket client for working with Asterisk ARI (Stasis)
 
