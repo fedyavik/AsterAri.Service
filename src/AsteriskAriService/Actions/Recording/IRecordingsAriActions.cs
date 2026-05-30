@@ -73,6 +73,9 @@ namespace AsteriskAriService.Actions.Recording
         /// <returns></returns>
         Task StopAsync(string recordingName);
         
+        /// <inheritdoc cref="StopAsync"/>>
+        Task TryStopAsync(string recordingName);
+        
         /// <summary>
         /// Pause a live recording.
         /// Pausing a recording suspends silence detection, which will be restarted when the recording is unpaused.

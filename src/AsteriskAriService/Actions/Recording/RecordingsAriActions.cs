@@ -111,7 +111,19 @@ namespace AsteriskAriService.Actions.Recording
                     _ => new AsterAriException($"Unknown response code {response.StatusCode} from ARI.", (int)response.StatusCode)
                 };
         }
-
+        
+        public async Task TryStopAsync(string recordingName)
+        {
+            try
+            {
+                await StopAsync(recordingName);
+            }
+            catch (Exception e)
+            {
+                // ignored
+            }
+        }
+        
         public async Task PauseAsync(string recordingName)
         {
             var response = await httpClient.PostAsync($"recordings/live/{recordingName}/pause", null);

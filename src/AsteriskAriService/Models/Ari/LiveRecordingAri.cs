@@ -38,7 +38,7 @@ namespace AsteriskAriService.Models.Ari
             if (_isStopped)
                 return;
             _isStopped = true;
-            await recordingsActions.StopAsync(Name);
+            await recordingsActions.TryStopAsync(Name);
         }
         public async Task Pause()
         {
