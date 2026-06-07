@@ -26,13 +26,12 @@ namespace AsteriskAriService.Models.Number
             }
 
             if (parts[0] == "SIP")
-                return parts.Length > 2 ? new SipNumber(parts[1], parts[2]) : new SipNumber(parts[1]);
+                return parts.Length > 2 ? new SipNumber(parts[2], parts[1]) : new SipNumber(parts[1]);
 
             if (parts[0] == "local")
             {
                 var numberAndTrunk = parts[1].Split("@");
                 return new AriNumber(numberAndTrunk[0]);
-
             }
             
             throw new AsterAriException($"Unknown endpoint type {numberOrEndpoint}");
